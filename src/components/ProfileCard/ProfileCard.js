@@ -5,13 +5,14 @@ import { Form, Image } from 'react-bootstrap';
 import microsoft from '../Assets/images/microsoft.svg';
 import location from '../Assets/images/location.svg';
 import MicIcon from '@mui/icons-material/Mic';
-import { Button } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import ai from '../Assets/images/ai.svg';
 import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ShareIcon from '@mui/icons-material/Share';
 import './ProfileCard.css'
+import { SelectChangeEvent } from '@mui/material/Select';
 const ProfileCard = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
@@ -36,6 +37,10 @@ const ProfileCard = () => {
   const [isMessageSent, setIsMessageSent] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [isLinkedIn, setIsLinkedIn] = useState(false);
+  const [age, setAge] = useState('');
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -144,22 +149,21 @@ const ProfileCard = () => {
             ) : (
               <div className="message-input-wrapper">
                 <div className="message-input-btns">
-                  <Form.Group className="custom-select">
-                    <div className="select-with-caret">
-                      <Form.Select
-                        value={messageCategory}
-                        onChange={handleMessageCategoryChange}
-                        className="custom-select-input"
-                      >
-                        <option value="Category">Message Category <span className='star-icon'>*</span></option>
-                        <option value="General">Business Enquiry</option>
-                        <option value="Inquiry">Work Opportunity</option>
-                        <option value="Support">Investment & Funding Ask</option>
-                        <option value="Support">Advisor Opportunity</option>
-                      </Form.Select>
-                      <span className="caret-icon"></span>
-                    </div>
-                  </Form.Group>
+                  <FormControl className='select-box'>
+                    <InputLabel id="demo-simple-select-label">Message Category <span className='star-icon'>*</span></InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      className="custom-select"
+                      value={age}
+                      label="Age"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={10}>Business Enquiry</MenuItem>
+                      <MenuItem value={20}>Work Opportunity</MenuItem>
+                      <MenuItem value={30}>Investment & Funding Ask</MenuItem>
+                      <MenuItem value={30}>Advisor Opportunity</MenuItem>
+                    </Select>
+                  </FormControl>
                   <Button
                     variant="contained"
                     className="auto-generate-btn"
@@ -172,8 +176,16 @@ const ProfileCard = () => {
 
                 <textarea
                   value={message}
-                  onChange={handleMessageChange}
-                  placeholder="Type message here"
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= 500) {
+                      handleMessageChange(e);
+                      const element = e.target;
+                      element.style.height = "90px";
+                      element.style.height = Math.min(element.scrollHeight, 160) + "px";
+                    }
+                  }}
+                  placeholder="Type message"
                   className="message-input"
                 />
                 <div className="message-length">
