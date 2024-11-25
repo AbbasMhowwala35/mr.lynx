@@ -72,12 +72,14 @@ const ProfileCard = () => {
 
   return (
     <div className='main-container'>
-      <Button variant="outlined" className="back-home-btn action-buttons">
-        <ArrowBackIcon className="arrow-icon" /> Back Home
-      </Button>
-      <Button className="share-profile-btn action-buttons"><ShareIcon /> Share Profile</Button>
-      <div className='info-section'>
-        <p> Send Tim a Priority Message <SmsFailedIcon className='info-icon' /></p>
+      <div className='btn-section'>
+        <Button variant="outlined" className="back-home-btn action-buttons">
+          <ArrowBackIcon className="arrow-icon" /> Back Home
+        </Button>
+        <Button className="share-profile-btn action-buttons"><ShareIcon /> Share Profile</Button>
+        {/* <div className='info-section'> */}
+          <p className='info-section'> Send Tim a Priority Message <SmsFailedIcon className='info-icon' /></p>
+        {/* </div> */}
       </div>
       <div className="profile-container">
         <div className="profile-sidebar">
@@ -92,7 +94,7 @@ const ProfileCard = () => {
             <p className="role">Operations Manager</p>
             <p className="company"><Image src={microsoft} className='company-logos' alt='Company' /> Microsoft Corporation</p>
             <p className="location"><Image src={location} className='location-logo' alt='Location Name' /> California</p>
-            <hr style={{ margin: "20px 0" }} />
+            <hr style={{ marginBottom: "20px" }} />
             <div className="btn-assistant">
               <Button className="assistant-btn">
                 <MicIcon className='icon' />
@@ -150,9 +152,10 @@ const ProfileCard = () => {
                         className="custom-select-input"
                       >
                         <option value="Category">Message Category <span className='star-icon'>*</span></option>
-                        <option value="General">General</option>
-                        <option value="Inquiry">Inquiry</option>
-                        <option value="Support">Support</option>
+                        <option value="General">Business Enquiry</option>
+                        <option value="Inquiry">Work Opportunity</option>
+                        <option value="Support">Investment & Funding Ask</option>
+                        <option value="Support">Advisor Opportunity</option>
                       </Form.Select>
                       <span className="caret-icon"></span>
                     </div>
