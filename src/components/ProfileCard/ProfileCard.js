@@ -179,7 +179,7 @@ const ProfileCard = () => {
               </div>
             )}
             {!isMessageSent && (
-              <Button onClick={handleSendMessage} className="send-button">Send</Button>
+              <Button onClick={handleSendMessage} disabled className="send-button">Send</Button>
             )}
           </div>
         </div>
