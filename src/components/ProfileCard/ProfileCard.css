@@ -407,12 +407,20 @@ textarea.message-input:focus {
     color: #65558f;
 }
 
-.css-1toxriw-MuiList-root-MuiMenu-list {
+.MuiList-root {
     background-color: #fef7ff !important;
 }
 
-.css-1toxriw-MuiList-root-MuiMenu-list li {
+.MuiList-root li {
     font-size: 14px !important;
+    border-bottom: 1px solid #CAC4D0;
+    height: 40px;
+}
+
+.MuiList-root li:hover,
+.MuiList-root li:focus
+{
+    background-color: #E8DEF8;
 }
 
 .MuiInputLabel-root {
