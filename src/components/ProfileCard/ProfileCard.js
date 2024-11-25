@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ShareIcon from '@mui/icons-material/Share';
 import './ProfileCard.css'
-import { SelectChangeEvent } from '@mui/material/Select';
+import tushar from '../Assets/images/tushar.jpg'
 const ProfileCard = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
@@ -20,7 +20,7 @@ const ProfileCard = () => {
       text: (
         <>
           <p className="bold-text">Hi there 👋<br />
-            I am Selva Prakash, Operations Manager at Microsoft Corporation.</p>
+            I am Tushar Chandorkar Operations Manager at Microsoft Corporation.</p>
           <p>
             I struggle to manage my DMs over LinkedIn/Instagram and have created this channel to connect with people who want to get in touch.</p>
           <p>
@@ -28,7 +28,7 @@ const ProfileCard = () => {
           <p>If you wish to discuss a brand deal, share some details about your brand and I'll respond if there's a fit. Please avoid reaching out to me for college-events since I've stopped doing that a while back.</p>
         </>
       ),
-      sender: 'Tim Cook',
+      sender: 'Tushar Chandorkar',
       isVerified: true,
     },
   ]);
@@ -83,15 +83,15 @@ const ProfileCard = () => {
         </Button>
         <Button className="share-profile-btn action-buttons"><ShareIcon /> Share Profile</Button>
         {/* <div className='info-section'> */}
-          <p className='info-section'> Send Tim a Priority Message <SmsFailedIcon className='info-icon' /></p>
+          <p className='info-section'> Send Tushar Chandorkar a Priority Message <SmsFailedIcon className='info-icon' /></p>
         {/* </div> */}
       </div>
       <div className="profile-container">
         <div className="profile-sidebar">
           <div className="profile-details">
-            <img src={tim} alt="Tim Cook" className="profile-image" />
+            <img src={tushar} alt="Tushar Chandorkar" className="profile-image" />
             <h2>
-              Tim Cook{' '}
+              Tushar Chandorkar{' '}
               {messages[0].isVerified && (
                 <Image src={verify} className="verify-icon" alt="Verified" />
               )}
