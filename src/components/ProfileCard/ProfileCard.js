@@ -150,14 +150,26 @@ const ProfileCard = () => {
               <div className="message-input-wrapper">
                 <div className="message-input-btns">
                   <FormControl className='select-box'>
-                    <InputLabel id="demo-simple-select-label">Message Category <span className='star-icon'>*</span></InputLabel>
+                    <InputLabel id="demo-simple-select-label">Message Category 
+                      {/* <span className='star-icon'>*</span> */}
+                    </InputLabel>
                     <Select
-                      labelId="demo-simple-select-label"
-                      className="custom-select"
-                      value={age}
-                      label="Age"
-                      onChange={handleChange}
-                    >
+                        labelId="demo-simple-select-label"
+                        className="custom-select"
+                        value={age}
+                        onChange={handleChange}
+                        MenuProps={{
+                          getContentAnchorEl: null,
+                          anchorOrigin: {
+                            vertical: "top",
+                            horizontal: "left",
+                          },
+                          transformOrigin: {
+                            vertical: "bottom",
+                            horizontal: "left",
+                          },
+                        }}
+                      >
                       <MenuItem value={10}>Business Enquiry</MenuItem>
                       <MenuItem value={20}>Work Opportunity</MenuItem>
                       <MenuItem value={30}>Investment & Funding Ask</MenuItem>
