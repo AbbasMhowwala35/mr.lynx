@@ -4,7 +4,6 @@ import { Image } from 'react-bootstrap';
 import microsoft from '../Assets/images/microsoft.svg';
 import location from '../Assets/images/location.svg';
 import MicIcon from '@mui/icons-material/Mic';
-import { Button } from '@mui/material';
 import ai from '../Assets/images/ai.svg';
 import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 import EditIcon from '@mui/icons-material/Edit';
@@ -14,6 +13,10 @@ import './ProfileCard.css'
 import tushar from '../Assets/images/tushar.jpg'
 import caret from '../Assets/images/icon.svg'
 import caretOpen from '../Assets/images/icon-open.svg'
+import GoogleIcon from '@mui/icons-material/Google';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { InputAdornment, TextField, Button, IconButton } from '@mui/material';
+
 const ProfileCard = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
@@ -102,6 +105,13 @@ const ProfileCard = () => {
     };
   }, []);
 
+
+  const handleGoogleLogin = (e) => {
+  };
+
+  const handleEmailContinue = (e) => {
+  };
+
   return (
     <div className='main-container'>
       <div className='btn-section'>
@@ -134,10 +144,6 @@ const ProfileCard = () => {
               <span>Speak with my Assistant</span>
             </div>
             <hr style={{ marginBottom: "20px", marginTop: "0px !important" }} />
-            {/* <div className="claim-profile-container">
-              <Button variant="text" color='error' sx={{ borderRadius: '999px' }}>Delete</Button>
-              <Button variant="contained" className="claim-profile-btn">Claim Profile</Button>
-            </div> */}
           </div>
           <div className="claim-profile-container">
             <Button variant="text" color='error' sx={{ borderRadius: '999px' }}>Delete</Button>
@@ -157,26 +163,72 @@ const ProfileCard = () => {
             {isMessageSent ? (
               <div className="sent-message">
                 <div className="sent-message-content">
-                  <div>{messages[messages.length - 1].text}</div>
-                  <Button onClick={handleEditMessage} className="edit-message-btn">
+                  <div className='edit-message'>{messages[messages.length - 1].text.slice(0, 40)}{messages[messages.length - 1].text.length > 100 && '...'}</div>
+                  <IconButton aria-label="edit" onClick={handleEditMessage} sx={{ borderRadius: '999px' }} className="edit-message-btn">
                     <EditIcon />
-                  </Button>
+                  </IconButton>
                 </div>
+                <hr />
                 <div className="email-or-linkedin">
+                  <div className='email-heading'>
+                    <h4>Register to Access ContactMe</h4>
+                    <p>You’ll be notified here when Tim replies</p>
+                  </div>
                   {isLinkedIn ? (
-                    <Button variant="contained">Continue with LinkedIn</Button>
+                    <>
+                      <hr />
+                      <Button variant="contained">Continue with LinkedIn</Button>
+                    </>
                   ) : (
                     <>
-                      <input
-                        type="email"
-                        value={userEmail}
-                        onChange={handleEmailChange}
-                        placeholder="Enter your email"
-                        className="email-input"
-                      />
-                      <Button variant="contained" onClick={handleLinkedInToggle}>Continue with LinkedIn</Button>
+                      <Button
+                        variant="contained"
+                        startIcon={<GoogleIcon />}
+                        onClick={handleGoogleLogin}
+                        className="google-login-btn"
+                      >
+                        Continue with Google
+                      </Button>
+                      <div className="or-separator">
+                        <span>OR</span>
+                      </div>
+                      <div className="email-input-wrapper">
+                        <TextField
+                          fullWidth
+                          label="Continue with mail"
+                          id="email-field"
+                          value={userEmail}
+                          onChange={handleEmailChange}
+                          sx={{
+                            m: 1,
+                            width: '100%',
+                            marginBottom: '50px',
+                            backgroundColor: '#F3EDF7',
+                            '& .MuiFilledInput-root': {
+                              borderBottom: '2px solid #49454F'
+                            },
+                            '& .MuiInputAdornment-root': {
+                              color: '#49454F',
+                            },
+                            '& .MuiInputBase-input::placeholder': {
+                              color: '##1D1B20',
+                            },
+                          }}
+                          slotProps={{
+                            input: {
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <ArrowForwardIcon />
+                                </InputAdornment>
+                              ),
+                            },
+                          }}
+                          variant="filled"
+                        />
+                      </div>
                     </>
                   )}
+
                 </div>
               </div>
             ) : (
@@ -190,7 +242,9 @@ const ProfileCard = () => {
                       aria-haspopup="true"
                       aria-expanded={isOpen}
                     >
-                      {options.find((opt) => opt.value === selectedValue)?.label || options[1].label}
+                      <span className="dropdown-text">
+                        {options.find((opt) => opt.value === selectedValue)?.label || options[1].label}
+                      </span>
                       <span className="dropdown-icon">
                         {isOpen ? (
                           <Image src={caretOpen} className="caret-icon" />
@@ -215,7 +269,6 @@ const ProfileCard = () => {
                       </div>
                     )}
                   </div>
-
                   <Button
                     variant="contained"
                     className="auto-generate-btn"
@@ -241,9 +294,7 @@ const ProfileCard = () => {
                       if (value.length <= 500) {
                         handleMessageChange(e);
                         const element = e.target;
-                        // element.style.height = "90px";
                         const newHeight = Math.min(Math.max(element.scrollHeight, 90), 160);
-                        // element.style.height = `${newHeight}px`;
                         const parent = element.parentNode;
                         parent.style.height = `${newHeight}px`;
                       }
@@ -258,7 +309,7 @@ const ProfileCard = () => {
               </div>
             )}
             {!isMessageSent && (
-              <Button onClick={handleSendMessage} disabled className="send-button">Send</Button>
+              <Button onClick={handleSendMessage} className="send-button">Send</Button>
             )}
           </div>
         </div>

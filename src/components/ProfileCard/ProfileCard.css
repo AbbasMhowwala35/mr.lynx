@@ -120,10 +120,6 @@
     margin-bottom: 20px;
 }
 
-.message.sent {
-    align-items: flex-end;
-}
-
 .message.received {
     align-items: flex-start;
 }
@@ -306,6 +302,7 @@ textarea::placeholder {
 
 .message-footer {
     margin-top: 16px;
+    min-height: 200px;
 }
 
 .auto-generate-btn {
@@ -448,6 +445,14 @@ button.MuiButtonBase-root {
     font-size: 10px;
 }
 
+.dropdown-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    word-wrap: break-word; 
+  }
+
 .dropdown-content {
     display: block;
     position: absolute;
@@ -475,3 +480,123 @@ button.MuiButtonBase-root {
     background-color: #E8DEF8 !important;
     color: #4A4459;
 }
+
+.sent-message-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.edit-message {
+    color: #8E8D8F !important;
+}
+
+hr {
+    border: 0.5px solid #E7E0EC !important;
+    margin-bottom: 20px;
+}
+
+.email-heading h4 {
+    font-size: 16px;
+    color: #1D1B20;
+    line-height: 24px;
+    letter-spacing: 0.16px;
+    font-weight: 500;
+}
+
+.email-heading p {
+    font-size: 12px;
+    color: #1D1B20;
+    line-height: 16px;
+    font-weight: 400;
+}
+.or-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .or-separator::before,
+  .or-separator::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 1px solid #E7E0EC; 
+  }
+  
+  .or-separator span {
+    margin: 0 10px; 
+    color: #E7E0EC;
+  }
+  
+  .email-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .email-input {
+    margin-bottom: 10px;
+  }
+  
+  .email-continue-btn {
+    width: 100%;
+  }
+  
+  .google-login-btn {
+    border-radius: 100px !important;
+    background-color: #65558F !important;
+    height: 40px;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    font-weight: 400 !important;
+    width: 100%;
+    margin-bottom: 20px !important;
+}
+
+.otp-verification {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .otp-input {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .otp-field {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #49454F;
+    border-radius: 5px;
+  }
+  
+  .final-step {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .final-step .user-details {
+    margin-top: 20px;
+  }
+  
+  .final-step .detail {
+    margin: 10px 0;
+  }
+  
+  .greeting {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .greeting h4 {
+    margin-bottom: 10px;
+  }
+  
