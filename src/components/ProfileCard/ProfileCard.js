@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import tim from '../Assets/images/tim.png';
+import React, { useEffect, useRef, useState } from 'react';
 import verify from '../Assets/images/verified.svg';
-import { Form, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import microsoft from '../Assets/images/microsoft.svg';
 import location from '../Assets/images/location.svg';
 import MicIcon from '@mui/icons-material/Mic';
-import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button } from '@mui/material';
 import ai from '../Assets/images/ai.svg';
 import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 import EditIcon from '@mui/icons-material/Edit';
@@ -13,6 +12,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ShareIcon from '@mui/icons-material/Share';
 import './ProfileCard.css'
 import tushar from '../Assets/images/tushar.jpg'
+import caret from '../Assets/images/icon.svg'
+import caretOpen from '../Assets/images/icon-open.svg'
 const ProfileCard = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
@@ -32,23 +33,18 @@ const ProfileCard = () => {
       isVerified: true,
     },
   ]);
-
-  const [messageCategory, setMessageCategory] = useState('');
   const [isMessageSent, setIsMessageSent] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [isLinkedIn, setIsLinkedIn] = useState(false);
-  const [age, setAge] = useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const [selectedValue, setSelectedValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
 
-  const handleMessageCategoryChange = (e) => {
-    setMessageCategory(e.target.value);
-  };
 
   const handleSendMessage = () => {
     if (message.trim() !== '') {
@@ -75,15 +71,46 @@ const ProfileCard = () => {
     setIsLinkedIn(!isLinkedIn);
   };
 
+  const options = [
+    { value: '', label: 'Message Category' },
+    { value: 'Business Enquiry', label: 'Business Enquiry' },
+    { value: 'Work Opportunity', label: 'Work Opportunity' },
+    { value: 'Investment & Funding Ask', label: 'Investment & Funding Ask' },
+    { value: 'Advisor Opportunity', label: 'Advisor Opportunity' },
+  ];
+
+  const handleSelect = (value, label) => {
+    setSelectedValue(value);
+    setIsOpen(false);
+
+    if (dropdownRef.current) {
+      dropdownRef.current.style.width = `${label.length * 10}px`;
+    }
+  };
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (buttonRef.current && !buttonRef.current.contains(event.target) && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className='main-container'>
       <div className='btn-section'>
         <Button variant="outlined" className="back-home-btn action-buttons">
           <ArrowBackIcon className="arrow-icon" /> Back Home
         </Button>
+        <p className='info-section'> Send Tushar Chandorkar a Priority Message <SmsFailedIcon className='info-icon' /></p>
         <Button className="share-profile-btn action-buttons"><ShareIcon /> Share Profile</Button>
         {/* <div className='info-section'> */}
-          <p className='info-section'> Send Tushar Chandorkar a Priority Message <SmsFailedIcon className='info-icon' /></p>
         {/* </div> */}
       </div>
       <div className="profile-container">
@@ -99,15 +126,21 @@ const ProfileCard = () => {
             <p className="role">Operations Manager</p>
             <p className="company"><Image src={microsoft} className='company-logos' alt='Company' /> Microsoft Corporation</p>
             <p className="location"><Image src={location} className='location-logo' alt='Location Name' /> California</p>
-            <hr style={{ marginBottom: "20px" }} />
+            <hr style={{ marginBottom: "20px", marginTop: "0px !important" }} />
             <div className="btn-assistant">
               <Button className="assistant-btn">
                 <MicIcon className='icon' />
               </Button>
               <span>Speak with my Assistant</span>
             </div>
+            <hr style={{ marginBottom: "20px", marginTop: "0px !important" }} />
+            <div className="claim-profile-container">
+            <Button variant="text" color='error'>Delete</Button>
+            <Button variant="contained" className="claim-profile-btn">Claim Profile</Button>
+          </div>
           </div>
           <div className="claim-profile-container">
+            <Button variant="text" color='error'>Delete</Button>
             <Button variant="contained" className="claim-profile-btn">Claim Profile</Button>
           </div>
         </div>
@@ -149,33 +182,40 @@ const ProfileCard = () => {
             ) : (
               <div className="message-input-wrapper">
                 <div className="message-input-btns">
-                  <FormControl className='select-box'>
-                    <InputLabel id="demo-simple-select-label">Message Category 
-                      {/* <span className='star-icon'>*</span> */}
-                    </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        className="custom-select"
-                        value={age}
-                        onChange={handleChange}
-                        MenuProps={{
-                          getContentAnchorEl: null,
-                          anchorOrigin: {
-                            vertical: "top",
-                            horizontal: "left",
-                          },
-                          transformOrigin: {
-                            vertical: "bottom",
-                            horizontal: "left",
-                          },
-                        }}
-                      >
-                      <MenuItem value={10}>Business Enquiry</MenuItem>
-                      <MenuItem value={20}>Work Opportunity</MenuItem>
-                      <MenuItem value={30}>Investment & Funding Ask</MenuItem>
-                      <MenuItem value={30}>Advisor Opportunity</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <div className="dropdown-container">
+                    <button
+                      ref={buttonRef}
+                      onClick={toggleDropdown}
+                      className="dropdown-button"
+                      aria-haspopup="true"
+                      aria-expanded={isOpen}
+                    >
+                      {options.find((opt) => opt.value === selectedValue)?.label || options[1].label}
+                      <span className="dropdown-icon">
+                        {isOpen ? (
+                          <Image src={caretOpen} className="caret-icon" />
+                        ) : (
+                          <Image src={caret} className="caret-icon" />
+                        )}
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div ref={dropdownRef} className="dropdown-content">
+                        {options
+                          .filter((option) => option.value)
+                          .map((option) => (
+                            <div
+                              key={option.value}
+                              onClick={() => handleSelect(option.value, option.label)}
+                              className={`dropdown-item ${selectedValue === option.value ? 'active' : ''}`}
+                            >
+                              {option.label}
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+
                   <Button
                     variant="contained"
                     className="auto-generate-btn"

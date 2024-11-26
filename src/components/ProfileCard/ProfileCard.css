@@ -23,7 +23,7 @@
     justify-content: space-between;
     border: 1px solid #E7E0EC;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 /* Sidebar Details */
@@ -111,8 +111,9 @@
 
 .chat-box {
     max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-
 .message {
     display: flex;
     flex-direction: column;
@@ -179,17 +180,7 @@
     color: #333333;
 }
 
-/* .message-footer {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  } */
-
 .message-input-btns {
-    /* position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1; */
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -203,6 +194,17 @@ textarea::placeholder {
     font-style: normal;
     font-size: 14px;
 }
+.message-input::-webkit-scrollbar {
+    width: 6px; 
+    height: 4px; 
+}
+
+.message-input::-webkit-scrollbar-thumb {
+    background-color: #65558F29;
+    border-radius: 4px;
+    margin-right: 8px; 
+}
+
 
 .chat-box::-webkit-scrollbar {
     width: 8px;
@@ -217,24 +219,6 @@ textarea::placeholder {
     background-color: #BBBBBB;
 }
 
-@media (max-width: 900px) {
-    .profile-container {
-        flex-direction: column;
-        height: auto;
-        width: 95%;
-    }
-
-    .profile-sidebar {
-        width: 100%;
-        padding: 40px 20px;
-    }
-
-    .profile-main {
-        width: 100%;
-        padding: 20px;
-    }
-}
-
 .btn-assistant {
     display: flex;
     align-items: center;
@@ -245,10 +229,6 @@ textarea::placeholder {
     color: #65558F;
     font-size: 14px;
     font-weight: 500;
-}
-
-.claim-profile-container {
-    margin-top: 24px;
 }
 
 .claim-profile-btn {
@@ -265,7 +245,8 @@ textarea::placeholder {
     padding: 0 24px !important
 }
 
-.claim-profile-btn:hover {
+.claim-profile-btn:hover, 
+.auto-generate-btn:hover {
     background-color: #D9D3E7 !important;
 }
 
@@ -276,7 +257,7 @@ textarea::placeholder {
 }
 
 .message-input {
-    max-width: 470px;
+    max-width: 100%;
     width: 100%;
     height: 90px;
     overflow-y: auto;
@@ -293,20 +274,6 @@ textarea::placeholder {
 .message-buttons {
     display: flex;
     gap: 10px;
-}
-
-.message-input::-webkit-scrollbar {
-    width: 10px;
-}
-
-.message-input::-webkit-scrollbar-thumb {
-    background-color: #f1f1f1;
-    border-radius: 20px;
-}
-
-.message-input::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 20px;
 }
 
 .send-button {
@@ -367,111 +334,15 @@ textarea.message-input:focus {
     color: #65558F;
     font-size: 24px;
 }
-.custom-select {
-    font-size: 14px !important;
-    color: #65558f !important;
-    /* font-weight: 600 !important; */
-    text-align: center !important;
+
+.claim-profile-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    /* min-width: 100px;
-    max-width: 200px; */
-    width: fit-content !important;
-    height: 35px;
-    border-radius: 20px !important;
-    box-sizing: border-box;
-}
-
-.select-box input{
-     position: relative;
-}
-
-.custom-select-input {
-    background-color: #fff;
-    font-size: 14px;
-    padding: 8px 30px 8px 8px;
-    color: #000;
-    border-radius: 20px; 
-    height: 35px;
-}
-
-.star-icon {
-    color: red;
-    font-size: 14px;
-    margin-left: 5px;
-}
-
-.MuiFormControl-root.select-box .MuiSelect-icon {
-    color: #65558f;
-}
-
-.MuiList-root {
-    background-color: #fef7ff !important;
-}
-
-.MuiList-root li {
-    font-size: 14px !important;
-    border-bottom: 1px solid #CAC4D0;
-    height: 40px;
-}
-
-.MuiList-root li:hover,
-.MuiList-root li:focus
-{
-    background-color: #E8DEF8;
-}
-
-.MuiInputLabel-root {
-    font-weight: 600;
-}
-
-.MuiSelect-select {
-    overflow: visible !important;
-    padding: 0px 20px !important;
-    width: 100% !important;
-}
-
-.select-with-caret {
-    display: flex;
-    align-items: center;
-}
-
-.MuiFormControl-root.select-box {
-    min-width: 200px !important;
-    border-radius: 20px !important;
-}
-
-.MuiFormControl-root.select-box label {
-    font-size: 13px !important;
-    color: #65558F;
-    margin-top: -8px;
-
-}
-
-.select-with-caret .caret-icon {
-    pointer-events: none;
-    height: 18px;
-    width: 18px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("../Assets/images/icon.svg");
-}
-
-.select-with-caret .custom-select-input:focus + .caret-icon,
-.select-with-caret .custom-select-input:active + .caret-icon {
-    transform: rotate(180deg);
-}
-
-
-.form-select {
-    all: unset !important;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .info-section {
-    width: 820px;
     margin: 0 auto;
 }
 
@@ -514,9 +385,9 @@ textarea.message-input:focus {
     /* top: 50px; */
 }
 
-.action-buttons {
+/* .action-buttons {
     position: absolute !important;
-}
+} */
 
 .action-buttons svg {
     margin-right: 5px;
@@ -530,17 +401,64 @@ textarea.message-input:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    top: 45px;
-}
-
-.btn-section .info-section {
-    left: 0;
-    right: 0;
-    top: 45px;
+    top: 35px;
 }
 
 button.MuiButtonBase-root {
     text-transform: capitalize !important;
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    display: inline-flex;
+    background-color: #fff;
+    font-size: 13px;
+    color: #65558F;
+    border: 1px solid #65558F;
+    border-radius: 20px;
+    height: 35px;
+    line-height: 30px;
+    min-width: 160px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 10px 10px 16px !important;
+}
+
+.dropdown-icon {
+    font-size: 10px;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    top: -180px;
+    background-color: #FEF7FF;
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px 1px 2px 0px #0000004D;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    padding: 10px !important;
+    font-size: 14px !important;
+    color: #1D1B20 !important;
+    border-bottom: 1px solid #D1CBD6 !important;
+}
+
+.dropdown-item:hover {
+    background-color: #E8DEF8 !important;
+}
+
+.dropdown-item.active {
+    background-color: #E8DEF8 !important;
+    color: #4A4459;
 }
