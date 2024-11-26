@@ -200,7 +200,7 @@ textarea::placeholder {
 }
 
 .message-input::-webkit-scrollbar-thumb {
-    background-color: #65558F29;
+    background-color: rgba(101, 85, 143, 0.16);
     border-radius: 4px;
     margin-right: 8px; 
 }
@@ -211,18 +211,19 @@ textarea::placeholder {
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-    background-color: #65558F;
+    background-color: rgba(101, 85, 143, 0.16);
     border-radius: 4px;
 }
 
 .chat-box::-webkit-scrollbar-thumb:hover {
-    background-color: #BBBBBB;
+    background-color: rgba(101, 85, 143, 0.16);
 }
 
 .btn-assistant {
     display: flex;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
 }
 
 .btn-assistant span {
@@ -256,19 +257,25 @@ textarea::placeholder {
     position: relative;
 }
 
-.message-input {
-    max-width: 100%;
-    width: 100%;
-    height: 90px;
-    overflow-y: auto;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 14px;
+.text-wrapper {
     position: relative;
     max-height: 160px;
     border: 1px solid #e7e0ec;
     margin-bottom: 16px;
+    border-radius: 8px;
+    padding: 10px;
+    height: 90px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.message-input {
+    overflow-y: auto;
+    font-size: 14px;
     resize: none;
+    border: none;
+    width: 100%;
+    height: 85%;
 }
 
 .message-buttons {
@@ -294,6 +301,11 @@ textarea::placeholder {
 
 .message-length span {
     font-size: 14px;
+    color: #797676;
+}
+
+.message-footer {
+    margin-top: 16px;
 }
 
 .auto-generate-btn {
@@ -315,7 +327,7 @@ textarea::placeholder {
 }
 
 textarea.message-input:focus {
-    outline: 1px solid #79747E;
+    outline: 0px solid #79747E;
 }
 
 .btn-assistant .assistant-btn {
@@ -429,6 +441,7 @@ button.MuiButtonBase-root {
     justify-content: center;
     gap: 8px;
     padding: 10px 10px 10px 16px !important;
+    font-weight: 500;
 }
 
 .dropdown-icon {

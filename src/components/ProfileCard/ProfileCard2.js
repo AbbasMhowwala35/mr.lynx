@@ -14,7 +14,7 @@ import './ProfileCard.css'
 import tushar from '../Assets/images/tushar.jpg'
 import caret from '../Assets/images/icon.svg'
 import caretOpen from '../Assets/images/icon-open.svg'
-const ProfileCard = () => {
+const ProfileCard2 = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -134,15 +134,15 @@ const ProfileCard = () => {
               <span>Speak with my Assistant</span>
             </div>
             <hr style={{ marginBottom: "20px", marginTop: "0px !important" }} />
-            {/* <div className="claim-profile-container">
+            <div className="claim-profile-container">
               <Button variant="text" color='error' sx={{ borderRadius: '999px' }}>Delete</Button>
               <Button variant="contained" className="claim-profile-btn">Claim Profile</Button>
-            </div> */}
+            </div>
           </div>
-          <div className="claim-profile-container">
+          {/* <div className="claim-profile-container">
             <Button variant="text" color='error' sx={{ borderRadius: '999px' }}>Delete</Button>
             <Button variant="contained" className="claim-profile-btn">Claim Profile</Button>
-          </div>
+          </div> */}
         </div>
 
         <div className="profile-main">
@@ -267,4 +267,4 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export default ProfileCard2;

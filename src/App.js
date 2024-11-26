@@ -5,6 +5,7 @@ import Header from "./components/Layout/Header";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import "./style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProfileCard2 from "./components/ProfileCard/ProfileCard2";
 
 const AppContent = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Header />} />
           <Route path="/profile-card" element={<ProfileCard />} />
+          <Route path="/profile-card-2" element={<ProfileCard2 />} />
         </Routes>
       </div>
     </div>
