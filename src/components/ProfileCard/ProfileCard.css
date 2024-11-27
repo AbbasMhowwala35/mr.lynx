@@ -1,4 +1,3 @@
-/* Profile Section */
 .profile-container {
     display: flex;
     width: 100%;
@@ -54,12 +53,6 @@
 
 }
 
-/* .profile-details h2 .verify-icon {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  } */
-
 .profile-details p {
     font-size: 14px;
     line-height: 18px;
@@ -114,6 +107,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 .message {
     display: flex;
     flex-direction: column;
@@ -190,15 +184,16 @@ textarea::placeholder {
     font-style: normal;
     font-size: 14px;
 }
+
 .message-input::-webkit-scrollbar {
-    width: 6px; 
-    height: 4px; 
+    width: 6px;
+    height: 4px;
 }
 
 .message-input::-webkit-scrollbar-thumb {
     background-color: rgba(101, 85, 143, 0.16);
     border-radius: 4px;
-    margin-right: 8px; 
+    margin-right: 8px;
 }
 
 
@@ -242,7 +237,7 @@ textarea::placeholder {
     padding: 0 24px !important
 }
 
-.claim-profile-btn:hover, 
+.claim-profile-btn:hover,
 .auto-generate-btn:hover {
     background-color: #D9D3E7 !important;
 }
@@ -302,7 +297,7 @@ textarea::placeholder {
 
 .message-footer {
     margin-top: 16px;
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 
 .auto-generate-btn {
@@ -450,8 +445,8 @@ button.MuiButtonBase-root {
     overflow: hidden;
     text-overflow: ellipsis;
     flex-grow: 1;
-    word-wrap: break-word; 
-  }
+    word-wrap: break-word;
+}
 
 .dropdown-content {
     display: block;
@@ -495,7 +490,8 @@ button.MuiButtonBase-root {
 
 hr {
     border: 0.5px solid #E7E0EC !important;
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
+    margin-top: 0px !important;
 }
 
 .email-heading h4 {
@@ -512,41 +508,42 @@ hr {
     line-height: 16px;
     font-weight: 400;
 }
+
 .or-separator {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     margin-bottom: 8px;
-  }
-  
-  .or-separator::before,
-  .or-separator::after {
+}
+
+.or-separator::before,
+.or-separator::after {
     content: '';
     flex-grow: 1;
-    border-bottom: 1px solid #E7E0EC; 
-  }
-  
-  .or-separator span {
-    margin: 0 10px; 
+    border-bottom: 1px solid #E7E0EC;
+}
+
+.or-separator span {
+    margin: 0 10px;
     color: #E7E0EC;
-  }
-  
-  .email-input-wrapper {
+}
+
+.email-input-wrapper {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-  }
-  
-  .email-input {
+}
+
+.email-input {
     margin-bottom: 10px;
-  }
-  
-  .email-continue-btn {
+}
+
+.email-continue-btn {
     width: 100%;
-  }
-  
-  .google-login-btn {
+}
+
+.google-login-btn {
     border-radius: 100px !important;
     background-color: #65558F !important;
     height: 40px;
@@ -560,43 +557,139 @@ hr {
 .otp-verification {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .otp-input {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-  }
-  
-  .otp-field {
+}
+
+.otp-input {
+    margin-bottom: 10px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #79747E;
+    color: #65558F;
+    text-align: center;
+    font-size: 14px;
+}
+
+.otp-field {
     width: 40px;
     height: 40px;
     text-align: center;
     font-size: 18px;
     border: 1px solid #49454F;
     border-radius: 5px;
-  }
-  
-  .final-step {
+}
+
+.final-step {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .final-step .user-details {
+}
+
+.final-step .user-details {
     margin-top: 20px;
-  }
-  
-  .final-step .detail {
+}
+
+.final-step .detail {
     margin: 10px 0;
-  }
-  
-  .greeting {
+}
+
+.greeting {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .greeting h4 {
+}
+
+.greeting h4 {
     margin-bottom: 10px;
-  }
-  
+}
+
+.otp-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.otp-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a.change-email {
+    color: #65558F;
+    vertical-align: baseline;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.otp-input:focus {
+    outline: 1px solid #65558F;
+}
+
+.MuiFormControl-root.MuiFormControl-fullWidth {
+    margin: 0 !important;
+    margin-bottom: 50px !important;
+}
+
+img.users-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.user-profile {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #Fef7ff;
+    padding: 10px 5px;
+    border-radius: 999px;
+    border: 1px solid #E8DEF8;
+}
+
+.user-profile-content h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.user-profile-content p {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D1B20;
+    margin-bottom: 0;
+}
+
+.theme-btn-filled {
+    height: 40px;
+    background-color: #65558F !important;
+    border-radius: 100px !important;
+    width: 100%;
+}
+
+.theme-btn-outlined-gray {
+    height: 40px;
+    background-color: #fff !important;
+    border: 1px solid #79747E !important;
+    border-radius: 100px !important;
+    width: 100%;
+    color: #65558F !important;
+}
+
+.confirmation-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+a.handle-links {
+    text-decoration: none;
+    color: #3377FF;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+a.handle-links svg {
+    width: 16px;
+}
