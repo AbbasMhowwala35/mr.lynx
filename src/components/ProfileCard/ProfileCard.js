@@ -196,6 +196,7 @@ const ProfileCard = () => {
             ))}
           </div>
           <div className="message-footer">
+          <hr />
             {isMessageSent ? (
               <div className="sent-message">
                 <div className="sent-message-content">
@@ -261,7 +262,13 @@ const ProfileCard = () => {
                               color: '#49454F',
                             },
                             '& .MuiInputBase-input::placeholder': {
-                              color: '##1D1B20',
+                              color: '#1D1B20',
+                            },
+                            '& .MuiInputLabel-root': {
+                              color: '#49454F',
+                            },
+                            '& .MuiInputLabel-root.Mui-focused': {
+                              color: '#49454F', 
                             },
                           }}
                           slotProps={{
@@ -338,7 +345,13 @@ const ProfileCard = () => {
                             color: '#49454F',
                           },
                           '& .MuiInputBase-input::placeholder': {
-                            color: '##1D1B20',
+                              color: '#1D1B20',
+                          },
+                          '& .MuiInputBase-input::placeholder': {
+                            color: '#1D1B20',
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                              color: '#49454F', 
                           },
                         }}
                         slotProps={{
@@ -476,9 +489,11 @@ const ProfileCard = () => {
                         </div>
                         <Link href="#" className='handle-links'>Handle Link <ArrowForwardIcon /></Link>
                       </div>
-                      <Button disabled className="send-button">
-                        Continue Chatting
-                      </Button>
+                      <div className="mb-20">
+                        <Button disabled className="send-button">
+                          Continue Chatting
+                        </Button>
+                      </div>
                     </>
                   ) : null}
                 </div>
